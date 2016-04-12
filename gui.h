@@ -2,6 +2,7 @@
 #define GUI_H
 
 #include <QMainWindow>
+#include "calibrationwindow.h"
 
 namespace Ui {
 class Gui;
@@ -15,8 +16,13 @@ public:
     explicit Gui(QWidget *parent = 0);
     ~Gui();
 
+private slots:
+    void on_pushButton_Calibrate_clicked();
+
 private:
     Ui::Gui *ui;
+    CalibrationWindow* calibWindow;
+    string pathToResources;
 };
 
 #endif // GUI_H
