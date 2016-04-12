@@ -602,6 +602,67 @@ void CameraCalibration::write(FileStorage& fs) const                        //Wr
        << "}";
 }
 
+bool CameraCalibration::performCalibAndSave(string inputVideoFile, string mapFile, string outputVideoFile)
+{       
+    Mat camFrame, calibratedFrame, map1, map2;
+    int startX = -1, startY = -1;
+    Size cropImageSize(-1,-1);
+
+    VideoCapture inputCap( inputVideoFile );
+
+    if(!inputCap.isOpened())
+    {
+        cout << "ERROR!! Could not open the Input Video: " << inputVideoFile << endl;
+        return false;
+    }
+    double fps = inputCap.get(CV_CAP_PROP_FPS);
+
+    FileStorage fs( mapFile, FileStorage::READ);
+    if (!fs.isOpened())
+    {
+        cout << "ERROR: Could not open the Calibration Map file: " << mapFile << endl;
+        return false;
+    }
+
+    fs["map1"] >> map1;
+    fs["map2"] >> map2;
+    fs["new_Left_X"] >> startX;
+    fs["new_Top_Y"] >> startY;
+    fs["cropImage_Width"] >> cropImageSize.width;
+    fs["cropImage_Height"] >> cropImageSize.height;
+    if(startX == -1 || startY == -1 || cropImageSize.height == -1 || cropImageSize.width == -1 || map1.empty() || map2.empty())
+    {
+        cout << "ERROR!! Could not read all the nodes from the Calibration Map file: " << mapFile << endl;
+        return false;
+    }
+
+    VideoWriter outputVideoWriter ( outputVideoFile , CV_FOURCC('P','I','M','1'), fps, cropImageSize, true); //initialize the VideoWriter object
+
+    if ( !outputVideoWriter.isOpened() ) //if not initialize the VideoWriter successfully, exit the program
+    {
+        cout << "ERROR!! Failed to initialize the Output video: " << (outputVideoFile) << endl;
+        return false;
+    }
+    while(1)
+    {
+        bool bSuccess = inputCap.read(camFrame); // read a new frame from video
+
+        if ( !bSuccess )
+            break; //End of the video file.
+
+        remap(camFrame, calibratedFrame, map1, map2, INTER_LINEAR);
+
+        Rect roi_ToCropCalibrated( startX, startY, cropImageSize.width, cropImageSize.height);
+        Mat caliberatedCropedFrame = calibratedFrame( roi_ToCropCalibrated );
+        outputVideoWriter.write(caliberatedCropedFrame);
+    }
+
+    cout << "Finished writing the video to the disk!" << endl;
+
+    QMessageBox::information(0, "Calibrated and Saved!", QString("successfully calibrated and saved the video at: %1").arg(QString::fromStdString(outputVideoFile) ));
+    return true;
+}
+
 /*
 void read(const FileNode& node, CameraCalibration& x, const CameraCalibration& default_value = CameraCalibration())
 {

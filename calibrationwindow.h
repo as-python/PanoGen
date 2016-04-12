@@ -33,14 +33,20 @@ public:
     void setPathToResources(const string &value);
 
 private slots:
-    void on_pushButton_Calibrate_clicked();
+    void on_pushButton_FindCalibParams_clicked();
     void on_pushButton_ChooseImgList_clicked();
     void setImage(Mat img);
     void setImageLabelText(QString text);
     void setImageCounterText(QString text);    
 
     void on_pushButton_CropImage_clicked();
-    void save_NewFrameSize(QPoint topLeft, QPoint bottomRight);
+    void save_NewFrameSize(QPoint topLeft, QPoint bottomRight);    
+
+    void on_pushButton_BrowseInputVid_clicked();
+
+    void on_pushButton_BrowseCalibMap_clicked();
+
+    void on_pushButton_PerformCalibration_clicked();
 
 private:
     Ui::CalibrationWindow *ui;

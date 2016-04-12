@@ -70,6 +70,7 @@ public:
     void saveCameraParams( Size& imageSize, Mat& cameraMatrix, Mat& distCoeffs, const vector<Mat>& rvecs, const vector<Mat>& tvecs,
                                         const vector<float>& reprojErrs, const vector<vector<Point2f> >& imagePoints, double totalAvgErr );
     bool save_camera_maps(Size imageSize, Mat map1, Mat map2);
+    bool performCalibAndSave(string inputVideoFile, string mapFile, string outputVideoFile);
 
     /*  void read(const FileNode& node, CameraCalibration& x, const CameraCalibration& default_value = CameraCalibration());
         bool onlineCalibAndSaveVideo(string path);*/

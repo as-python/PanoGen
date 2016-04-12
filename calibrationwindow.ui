@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1318</width>
-    <height>633</height>
+    <height>671</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -150,7 +150,7 @@ QGroupBox::title {
     <item row="5" column="2">
      <widget class="QPushButton" name="pushButton_ChooseImgList">
       <property name="text">
-       <string>Choose</string>
+       <string>Browse..</string>
       </property>
      </widget>
     </item>
@@ -176,7 +176,7 @@ QGroupBox::title {
      </widget>
     </item>
     <item row="10" column="1" colspan="2">
-     <widget class="QPushButton" name="pushButton_Calibrate">
+     <widget class="QPushButton" name="pushButton_FindCalibParams">
       <property name="text">
        <string>Find Calibration parameters</string>
       </property>
@@ -232,18 +232,184 @@ QGroupBox::title {
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_CropImage">
+  <widget class="QFrame" name="frame_PerformCalib">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>530</y>
-     <width>99</width>
-     <height>27</height>
+     <x>470</x>
+     <y>520</y>
+     <width>611</width>
+     <height>111</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Crop image</string>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
    </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLineEdit" name="lineEdit_InputVideo">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>10</y>
+      <width>231</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>/home/arjun/workspace/PanoGen/resources/videos/calibraion/GOPR0106.MP4</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_InputVideo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>14</y>
+      <width>111</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Input video</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_BrowseInputVid">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>10</y>
+      <width>99</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Browse..</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_CalibMapName">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>48</y>
+      <width>111</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Calibration Map</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_CalibMapLocation">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>43</y>
+      <width>231</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>/home/arjun/workspace/PanoGen/resources/maps/CalibOut_Map.xml</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_BrowseCalibMap">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>43</y>
+      <width>99</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Browse..</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_OutputVideo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>81</y>
+      <width>111</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Output video</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_OutputVideo">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>76</y>
+      <width>231</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Calibrated_Video.avi</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_PerformCalibration">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>10</y>
+      <width>99</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Perform 
+Calibration</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_CropImage">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>520</y>
+     <width>441</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="pushButton_CropImage">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>5</y>
+      <width>101</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Crop image</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_CropImageSample">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>5</y>
+      <width>161</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

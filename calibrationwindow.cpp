@@ -27,7 +27,7 @@ CalibrationWindow::CalibrationWindow(QWidget *parent) :
     ui->comboBox_InputType->addItem("Video file", CameraCalibration::VIDEO_FILE);
     ui->comboBox_InputType->addItem("Camera", CameraCalibration::CAMERA);
 
-    ui->label_ImageCounter->setVisible(false);    
+    ui->label_ImageCounter->setVisible(false);
 }
 
 CalibrationWindow::~CalibrationWindow()
@@ -48,7 +48,7 @@ QImage CalibrationWindow::Mat2QImage(const Mat3b &src)
     return dest;
 }
 
-void CalibrationWindow::on_pushButton_Calibrate_clicked()
+void CalibrationWindow::on_pushButton_FindCalibParams_clicked()
 {
     ui->groupBox_CalibSettings->setEnabled(false);
     Size boardSize;
@@ -114,6 +114,8 @@ void CalibrationWindow::setImageCounterText(QString text)
 void CalibrationWindow::setPathToResources(const string &value)
 {
     pathToResources = value;
+    QPixmap pixmap( QString::fromStdString( pathToResources + "gui_pictures/calibration_crop.png" ));
+    ui->label_CropImageSample->setPixmap(pixmap.scaled(ui->label_CropImageSample->width(), ui->label_CropImageSample->height(),Qt::KeepAspectRatio));
 }
 
 
@@ -169,3 +171,28 @@ void CalibrationWindow::save_NewFrameSize(QPoint topLeft, QPoint bottomRight)
 
 }
 
+void CalibrationWindow::on_pushButton_BrowseInputVid_clicked()
+{
+    //QString filter = "File Description (*.xml)";
+    QString image_List = QFileDialog::getOpenFileName(this, tr("Select a video to calibrate"), QString::fromStdString(pathToResources));
+
+    ui->lineEdit_InputVideo->setText(image_List);
+}
+
+void CalibrationWindow::on_pushButton_BrowseCalibMap_clicked()
+{
+    QString filter = "File Description (*.xml)";
+    QString mapLocation = QFileDialog::getOpenFileName(this, tr("Select the Calibration Map"), QString::fromStdString(pathToResources), filter);
+    //QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"), QString::fromStdString(pathToResources), QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+
+    ui->lineEdit_CalibMapLocation->setText(mapLocation);
+}
+
+void CalibrationWindow::on_pushButton_PerformCalibration_clicked()
+{
+    string outputVideoFile = pathToResources + "videos/" + ui->lineEdit_OutputVideo->text().toStdString();
+    bool success = camCalib->performCalibAndSave(ui->lineEdit_InputVideo->text().toStdString(), ui->lineEdit_CalibMapLocation->text().toStdString(), outputVideoFile);
+    if( !success )
+        QMessageBox::information(0, "Error!", "Error! Could not perform calibration and save.");
+
+}
