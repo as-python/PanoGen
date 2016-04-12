@@ -5,6 +5,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
 #include <QTime>
+#include <QMessageBox>
 #include <QCoreApplication>
 
 #include <stdio.h>
@@ -95,8 +96,7 @@ public:
 signals:
     void signal_ChangeImage(Mat);
     void signal_ChangeTitleText(QString);
-    void signal_ChangeImageCounterText(QString);
-    void signal_setStatus(QString);
+    void signal_ChangeImageCounterText(QString);    
 
 };
 

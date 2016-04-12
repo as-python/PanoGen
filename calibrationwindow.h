@@ -37,8 +37,7 @@ private slots:
     void on_pushButton_ChooseImgList_clicked();
     void setImage(Mat img);
     void setImageLabelText(QString text);
-    void setImageCounterText(QString text);
-    void setStatus(QString text);
+    void setImageCounterText(QString text);    
 
     void on_pushButton_CropImage_clicked();
     void save_NewFrameSize(QPoint topLeft, QPoint bottomRight);

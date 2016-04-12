@@ -217,23 +217,23 @@ bool CameraCalibration::calibrate()
             imagePoints.clear();
         }
 
-        addDelay(250); //This delay is added so that the user can see the detected Chessboard. This can be removed....
+        addDelay(0); //This delay is added so that the user can see the detected Chessboard. This can be removed....
     }
 
     Mat view, rview, map1, map2;
     initUndistortRectifyMap(cameraMatrix, distCoeffs, Mat(), getOptimalNewCameraMatrix(cameraMatrix, distCoeffs, imageSize,1, imageSize, 0),
                             imageSize, CV_16SC2, map1, map2);
 
-    bool success = save_camera_maps(imageSize, map1, map2);
+    bool success = save_camera_maps(imageSize, map1, map2);    
     if(success)
     {
-        string text = "Calibration succeeded";
-        text +=  "\nThe camera parameters are saved at " + path + outputFileName;
-        text += "\nThe joint undistortion and rectification transformation have been calculated and saved as maps at " + path + "maps/" + output_mapfile_name;
-        emit signal_setStatus(QString::fromStdString(text));
+        string text = "Calibration succeeded!\n";
+        text +=  "\nThe camera parameters are saved at: " + path + outputFileName;
+        text += "\n\nThe joint undistortion and rectification transformation have been calculated and saved as maps at: " + path + "maps/" + output_mapfile_name;
+        QMessageBox::information(0, "Parameters saved!", QString::fromStdString(text));
     }
     else
-        emit signal_setStatus(QString::fromStdString("ERROR! Couldn't save the maps!"));    
+        QMessageBox::information(0, "Error!", "ERROR! Couldn't save the maps!");
 
     // -----------------------Show the undistorted image for the image list ------------------------
     if (inputType == IMAGE_LIST && showUndistorsed)

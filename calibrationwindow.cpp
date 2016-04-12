@@ -10,7 +10,6 @@ CalibrationWindow::CalibrationWindow(QWidget *parent) :
     connect(camCalib, SIGNAL(signal_ChangeImage(Mat)), this, SLOT(setImage(Mat)));
     connect( camCalib, SIGNAL(signal_ChangeTitleText(QString)), this, SLOT(setImageLabelText(QString)) );
     connect( camCalib, SIGNAL(signal_ChangeImageCounterText(QString)), this, SLOT(setImageCounterText(QString)) );
-    connect( camCalib, SIGNAL(signal_setStatus(QString)), this, SLOT(setStatus(QString)) );
 
     cropImgWindow = new CropImage();
     connect(cropImgWindow, SIGNAL(newFrameSize(QPoint,QPoint)), this, SLOT(save_NewFrameSize(QPoint,QPoint)));
@@ -28,8 +27,7 @@ CalibrationWindow::CalibrationWindow(QWidget *parent) :
     ui->comboBox_InputType->addItem("Video file", CameraCalibration::VIDEO_FILE);
     ui->comboBox_InputType->addItem("Camera", CameraCalibration::CAMERA);
 
-    ui->label_ImageCounter->setVisible(false);
-    ui->label_Status->setVisible(false);
+    ui->label_ImageCounter->setVisible(false);    
 }
 
 CalibrationWindow::~CalibrationWindow()
@@ -113,13 +111,6 @@ void CalibrationWindow::setImageCounterText(QString text)
     ui->label_ImageCounter->setText(text);
 }
 
-void CalibrationWindow::setStatus(QString text)
-{
-    if(!ui->label_Status->isVisible())
-        ui->label_Status->setVisible(true);
-
-    ui->label_Status->setText(text);
-}
 void CalibrationWindow::setPathToResources(const string &value)
 {
     pathToResources = value;
@@ -135,18 +126,46 @@ void CalibrationWindow::on_pushButton_CropImage_clicked()
 
 void CalibrationWindow::save_NewFrameSize(QPoint topLeft, QPoint bottomRight)
 {
-    cout << "Herrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"<<endl;
-    FileStorage fs( pathToResources + "maps/" + ui->lineEdit_MapName->text().toStdString(), FileStorage::APPEND );
+    FileStorage fs_Read( pathToResources + "maps/" + ui->lineEdit_MapName->text().toStdString(), FileStorage::READ );
 
-    fs << "new_Left_X" << topLeft.x();
-    fs << "new_Top_Y" << topLeft.y();
-    fs << "new_Right_X" << bottomRight.x();
-    fs << "new_Bottom_Y" << bottomRight.y();
-    fs << "cropImage_Width" << ( bottomRight.x() - topLeft.x());
-    fs << "cropImage_Height" << ( bottomRight.y() - topLeft.y());
+    string calibration_Time;
+    Size original_ImageSize, pattern_BoarderSize;
+    float squareSize;
+    Mat map1, map2;
 
-    fs.release();
+    fs_Read["calibration_Time"] >> calibration_Time;
+    fs_Read["image_Width"] >> original_ImageSize.width;
+    fs_Read["image_Height"] >> original_ImageSize.height;
+    fs_Read["board_Width"] >> pattern_BoarderSize.width;
+    fs_Read["board_Height"] >> pattern_BoarderSize.height;
+    fs_Read["square_Size"] >> squareSize;
 
+    fs_Read["map1"] >> map1;
+    fs_Read["map2"] >> map2;
+
+    fs_Read.release();
+
+    FileStorage fs_Write( pathToResources + "maps/" + ui->lineEdit_MapName->text().toStdString(), FileStorage::WRITE );
+
+    fs_Write << "calibration_Time" << calibration_Time;
+
+    fs_Write << "image_Width" << original_ImageSize.width;
+    fs_Write << "image_Height" << original_ImageSize.height;
+    fs_Write << "board_Width" << pattern_BoarderSize.width;
+    fs_Write << "board_Height" << pattern_BoarderSize.height;
+    fs_Write << "square_Size" << squareSize;
+
+    fs_Write << "map1" << map1;
+    fs_Write << "map2" << map2;
+
+    fs_Write << "new_Left_X" << topLeft.x();
+    fs_Write << "new_Top_Y" << topLeft.y();
+    fs_Write << "new_Right_X" << bottomRight.x();
+    fs_Write << "new_Bottom_Y" << bottomRight.y();
+    fs_Write << "cropImage_Width" << ( bottomRight.x() - topLeft.x());
+    fs_Write << "cropImage_Height" << ( bottomRight.y() - topLeft.y());
+
+    fs_Write.release();
 
 }
 
