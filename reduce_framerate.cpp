@@ -51,7 +51,7 @@ void Reduce_FrameRate::on_pushButton_ReduceFR_clicked()
     }
 
     Size frameSize( inputCap.get(CV_CAP_PROP_FRAME_WIDTH), inputCap.get(CV_CAP_PROP_FRAME_HEIGHT) );
-    string outputVideoFile = pathToResource + ui->lineEdit_OutputVidName->text().toStdString();
+    string outputVideoFile = pathToResource + "videos/" + ui->lineEdit_OutputVidName->text().toStdString();
     double requiredFR = ui->comboBox_RequiredFR->itemData(ui->comboBox_RequiredFR->currentIndex()).toDouble();
 
     try
