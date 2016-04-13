@@ -19,7 +19,7 @@
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>199</width>
+      <width>221</width>
       <height>45</height>
      </rect>
     </property>
@@ -32,12 +32,25 @@
      <rect>
       <x>10</x>
       <y>80</y>
-      <width>199</width>
+      <width>221</width>
       <height>45</height>
      </rect>
     </property>
     <property name="text">
      <string>Reduce frame rate</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_HomographyTrans">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>140</y>
+      <width>221</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Homography Transformation</string>
     </property>
    </widget>
   </widget>

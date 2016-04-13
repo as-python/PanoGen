@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     cropimage.cpp \
     mousetrack_qlabel.cpp \
     reduce_framerate.cpp \
-    scaleimage_graphicsview.cpp
+    scaleimage_graphicsview.cpp \
+    homography_transformation.cpp
 
 HEADERS  += gui.h \
     calibrationwindow.h \
@@ -29,9 +30,11 @@ HEADERS  += gui.h \
     cropimage.h \
     mousetrack_qlabel.h \
     reduce_framerate.h \
-    scaleimage_graphicsview.h
+    scaleimage_graphicsview.h \
+    homography_transformation.h
 
 FORMS    += gui.ui \
     calibrationwindow.ui \
     cropimage.ui \
-    reduce_framerate.ui
+    reduce_framerate.ui \
+    homography_transformation.ui

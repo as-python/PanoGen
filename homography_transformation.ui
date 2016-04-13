@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Homography_Transformation</class>
+ <widget class="QWidget" name="Homography_Transformation">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1600</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1580</width>
+        <height>780</height>
+       </rect>
+      </property>
+      <widget class="QFrame" name="frame_LeftRight">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>411</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QRadioButton" name="radioButton_LeftFront">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>20</y>
+          <width>117</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Left - Front</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_FrontRight">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>50</y>
+          <width>117</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Front - Right</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="frame_Browse">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>411</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="lineEdit_KeypointNum">
+          <property name="text">
+           <string>500</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="lineEdit_FrontImg">
+          <property name="text">
+           <string>/home/arjun/workspace/PanoGen/resources/images/front.png</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_FrontImg">
+          <property name="text">
+           <string>Front Image</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_SideImg">
+          <property name="text">
+           <string>Left image</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="pushButton_BrowseFrontImg">
+          <property name="text">
+           <string>Browse..</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="lineEdit_SideImg">
+          <property name="text">
+           <string>/home/arjun/workspace/PanoGen/resources/images/left.png</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="pushButton_BrowseSideImg">
+          <property name="text">
+           <string>Browse..</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_KeypointNum">
+          <property name="text">
+           <string>SIFT keypoint #</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QPushButton" name="pushButton_EstimateHomography">
+          <property name="text">
+           <string>Estimate Homography</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="ScaleImage_GraphicsView" name="graphicsView_Img">
+       <property name="geometry">
+        <rect>
+         <x>429</x>
+         <y>10</y>
+         <width>1141</width>
+         <height>690</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_MousePos">
+       <property name="geometry">
+        <rect>
+         <x>1400</x>
+         <y>720</y>
+         <width>145</width>
+         <height>35</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Box</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="text">
+        <string>X = 9999, Y = 9999 </string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ScaleImage_GraphicsView</class>
+   <extends>QGraphicsView</extends>
+   <header location="global">scaleimage_graphicsview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

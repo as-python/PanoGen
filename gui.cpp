@@ -27,3 +27,10 @@ void Gui::on_pushButton_Calibrate_2_clicked()
     reduceFR->setPathToResource(this->pathToResources);
     reduceFR->show();
 }
+
+void Gui::on_pushButton_HomographyTrans_clicked()
+{
+    homographyTrans = new Homography_Transformation();
+    homographyTrans->setPathToResource(this->pathToResources);
+    homographyTrans->show();
+}
