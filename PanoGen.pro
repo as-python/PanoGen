@@ -19,14 +19,17 @@ SOURCES += main.cpp\
     calibrationwindow.cpp \
     cameracalibration.cpp \
     cropimage.cpp \
-    mousetrack_qlabel.cpp
+    mousetrack_qlabel.cpp \
+    reduce_framerate.cpp
 
 HEADERS  += gui.h \
     calibrationwindow.h \
     cameracalibration.h \
     cropimage.h \
-    mousetrack_qlabel.h
+    mousetrack_qlabel.h \
+    reduce_framerate.h
 
 FORMS    += gui.ui \
     calibrationwindow.ui \
-    cropimage.ui
+    cropimage.ui \
+    reduce_framerate.ui

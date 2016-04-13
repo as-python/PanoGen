@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Reduce_FrameRate</class>
+ <widget class="QWidget" name="Reduce_FrameRate">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>471</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Reduce frame rate</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QScrollArea" name="scrollArea_ReduceFR">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>451</width>
+        <height>280</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="2">
+        <widget class="QLineEdit" name="lineEdit_InputVideo"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="label_RequiredFR">
+         <property name="text">
+          <string>Required Frame rate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_InputVideo">
+         <property name="text">
+          <string>Input video</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="label_OutputVidName">
+         <property name="text">
+          <string>Output video name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QPushButton" name="pushButton_InputVideo">
+         <property name="text">
+          <string>Browse..</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="label_CurrentFR">
+         <property name="text">
+          <string>Current Frame rate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLineEdit" name="lineEdit_OutputVidName"/>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLineEdit" name="lineEdit_CurrentFR"/>
+       </item>
+       <item row="2" column="2">
+        <widget class="QComboBox" name="comboBox_RequiredFR"/>
+       </item>
+       <item row="4" column="2">
+        <widget class="QPushButton" name="pushButton_ReduceFR">
+         <property name="text">
+          <string>Reduce Frame rate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3">
+        <widget class="QLabel" name="label_Status">
+         <property name="text">
+          <string>Processing...</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

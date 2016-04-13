@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "calibrationwindow.h"
+#include "reduce_framerate.h"
 
 namespace Ui {
 class Gui;
@@ -19,9 +20,12 @@ public:
 private slots:
     void on_pushButton_Calibrate_clicked();
 
+    void on_pushButton_Calibrate_2_clicked();
+
 private:
     Ui::Gui *ui;
     CalibrationWindow* calibWindow;
+    Reduce_FrameRate *reduceFR;
     string pathToResources;
 };
 

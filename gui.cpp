@@ -20,3 +20,10 @@ void Gui::on_pushButton_Calibrate_clicked()
     calibWindow->setPathToResources(this->pathToResources);
     calibWindow->show();
 }
+
+void Gui::on_pushButton_Calibrate_2_clicked()
+{
+    reduceFR = new Reduce_FrameRate();
+    reduceFR->setPathToResource(this->pathToResources);
+    reduceFR->show();
+}
