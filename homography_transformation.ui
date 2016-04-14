@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1600</width>
-    <height>800</height>
+    <height>831</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@
         <x>0</x>
         <y>0</y>
         <width>1580</width>
-        <height>780</height>
+        <height>811</height>
        </rect>
       </property>
       <widget class="QFrame" name="frame_LeftRight">
@@ -157,15 +157,15 @@
          <x>429</x>
          <y>10</y>
          <width>1141</width>
-         <height>690</height>
+         <height>751</height>
         </rect>
        </property>
       </widget>
       <widget class="QLabel" name="label_MousePos">
        <property name="geometry">
         <rect>
-         <x>1400</x>
-         <y>720</y>
+         <x>1426</x>
+         <y>766</y>
          <width>145</width>
          <height>35</height>
         </rect>
@@ -182,6 +182,157 @@
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
+      </widget>
+      <widget class="QFrame" name="frame_Perspective">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>340</y>
+         <width>411</width>
+         <height>171</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QRadioButton" name="radioButton_TopRight">
+        <property name="geometry">
+         <rect>
+          <x>45</x>
+          <y>10</y>
+          <width>131</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="text">
+         <string>Top Right</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_TopLeft">
+        <property name="geometry">
+         <rect>
+          <x>45</x>
+          <y>94</y>
+          <width>131</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="text">
+         <string>Top Left</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_BottomLeft">
+        <property name="geometry">
+         <rect>
+          <x>45</x>
+          <y>66</y>
+          <width>131</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="text">
+         <string>Bottom Left</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_BottomRight">
+        <property name="geometry">
+         <rect>
+          <x>45</x>
+          <y>38</y>
+          <width>131</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="text">
+         <string>Right bottom</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_TopRight">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>10</y>
+          <width>130</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>X = 0, Y = 0</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_BottomRight">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>38</y>
+          <width>130</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>X = 0, Y = 0</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_BottomLeft">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>66</y>
+          <width>130</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>X = 0, Y = 0</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_TopLeft">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>94</y>
+          <width>130</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>X = 0, Y = 0</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_PerfomPerspective">
+        <property name="geometry">
+         <rect>
+          <x>115</x>
+          <y>126</y>
+          <width>200</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string>Perspective transformation</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>

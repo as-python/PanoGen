@@ -19,7 +19,7 @@ ScaleImage_GraphicsView::ScaleImage_GraphicsView( QWidget * parent ) : QGraphics
 
 
 
-void ScaleImage_GraphicsView::setImage(const QImage &image)
+void ScaleImage_GraphicsView::setImage(const QImage &image, double scaleFactor)
 {
     // Update the pixmap in the scene
     pixmap = QPixmap::fromImage(image);
@@ -30,6 +30,8 @@ void ScaleImage_GraphicsView::setImage(const QImage &image)
 
     // Store the image size
     imageSize = image.size();
+
+    scale(1.0 / scaleFactor, 1.0 / scaleFactor);
 }
 
 void ScaleImage_GraphicsView::setZoomFactor(const double factor)
@@ -44,8 +46,9 @@ void ScaleImage_GraphicsView::setZoomCtrlFactor(const double factor)
 
 void ScaleImage_GraphicsView::mousePressEvent(QMouseEvent *event)
 {
-    emit mousePressed();
-    QGraphicsView::mousePressEvent(event);
+    QPointF imagePoint = mapToScene(QPoint(event->x(), event->y() ));
+    emit mousePressed(imagePoint);
+    //QGraphicsView::mousePressEvent(event);
 }
 
 void ScaleImage_GraphicsView::wheelEvent(QWheelEvent *event)

@@ -9,8 +9,8 @@
 #include <QMenu>
 
 // Default zoom factors
-#define         DEFAULT_ZOOM_FACTOR             1.15
-#define         DEFAULT_ZOOM_CTRL_FACTOR        1.01
+#define         DEFAULT_ZOOM_FACTOR             1.08
+#define         DEFAULT_ZOOM_CTRL_FACTOR        1.20
 
 /*!
  * \brief The ScaleImage_GraphicsView class     This class has been designed to display an image
@@ -26,7 +26,7 @@ public:
      * \brief setImage                          Set the image in the widget
      * \param image                             QImage to display
      */
-    void setImage(const QImage & image);
+    void setImage(const QImage & image, double scaleFactor=1);
 
     /*!
      * \brief setZoomFactor                     Set the zoom factor when the CTRL key is not pressed
@@ -84,7 +84,7 @@ signals:
     /*!
      * \brief mousePressed                      Fires to notify the mouse click
      */
-    void mousePressed();
+    void mousePressed(QPointF mousePos);
 };
 
 #endif // SCALEIMAGE_GRAPHICSVIEW_H
