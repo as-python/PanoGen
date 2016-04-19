@@ -54,6 +54,11 @@ void Reduce_FrameRate::on_pushButton_ReduceFR_clicked()
     string outputVideoFile = pathToResource + "videos/" + ui->lineEdit_OutputVidName->text().toStdString();
     double requiredFR = ui->comboBox_RequiredFR->itemData(ui->comboBox_RequiredFR->currentIndex()).toDouble();
 
+    if(currentFR <=0 )
+    {
+        currentFR = ui->lineEdit_CurrentFR->text().toInt();
+    }
+
     try
     {
         VideoWriter outputVideoWriter( outputVideoFile,  CV_FOURCC('D','I','V','X'), requiredFR, frameSize, true); //initialize the VideoWriter object

@@ -34,3 +34,11 @@ void Gui::on_pushButton_HomographyTrans_clicked()
     homographyTrans->setPathToResource(this->pathToResources);
     homographyTrans->show();
 }
+
+void Gui::on_pushButton_HomographyTrans_BlendAndPlay_clicked()
+{
+    blendNPlay = new Blend_And_Play();
+    blendNPlay->setPathToResource(this->pathToResources);
+    blendNPlay->show();
+
+}

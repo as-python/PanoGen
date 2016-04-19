@@ -38,8 +38,6 @@ public:
     void estimateHomography_FrontRight();
     void estimatePerspective_FrontRight();
 
-
-
 private:
     Ui::Homography_Transformation *ui;
     string pathToResource;
